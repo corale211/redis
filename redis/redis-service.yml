@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: redis
+  namespace: redis
+spec:
+  ports:
+    - name: redis
+      protocol: TCP
+      port: 6379
+      targetPort: 6379
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: redis
+    name: redis
+status:
+  loadBalancer: {}
